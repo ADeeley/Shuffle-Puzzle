@@ -23,7 +23,8 @@
 h1 {
   font-size: 80px;
   font-family: 'Bangers', cursive;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  text-shadow: 2px 2px lightgrey; }
 
 .container {
   display: flex;
@@ -40,8 +41,12 @@ h1 {
 .tiles__tile {
   width: 100px;
   height: 100px;
-  background-color: burlywood;
   background-image: url("https://source.unsplash.com/random/500x500");
   background-size: auto; }
+
+footer {
+  font-family: helvetica;
+  font-style: italic;
+  font-size: 14px; }
 
 /*# sourceMappingURL=style.css.map */
