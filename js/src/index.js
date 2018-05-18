@@ -31,12 +31,13 @@ function positionTilesCorrectly() {
 }
 
 function newPuzzle() {
-    
+    location.reload();
 }
 
 function init() {
     tiles.forEach(tile => tile.addEventListener('click', (e) => rotateTile(e.target)));
     shuffleButton.addEventListener('click', shuffle);
+    NewPuzzleButton.addEventListener('click', newPuzzle);
     positionTilesCorrectly();
     shuffle();
 }
