@@ -15,5 +15,17 @@ function shuffle() {
     })
 }
 
-tiles.forEach((tile) => tile.addEventListener('click', (e) => rotateTile(e.target)));
+tiles.forEach(tile => tile.addEventListener('click', (e) => rotateTile(e.target)));
 shuffleButton.addEventListener('click', shuffle);
+
+let size = 100;
+let row = 0;
+let col = 0;
+tiles.forEach(tile => {
+    tile.style.setProperty('background-position', `-${row}px -${col}px`);
+    row += size;
+    if (row >= 500) {
+        row = 0;
+        col += size;
+    }
+});

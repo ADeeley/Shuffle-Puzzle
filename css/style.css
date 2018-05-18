@@ -6,13 +6,11 @@ h1 {
   grid-template-columns: repeat(5, 100px);
   grid-template-rows: repeat(5, 100px); }
 
-.tile-1 {
-  background-position: 0 0; }
-
 .tiles__tile {
   width: 100px;
   height: 100px;
   background-color: burlywood;
-  background-image: url("https://source.unsplash.com/random/100x100"); }
+  background-image: url("https://source.unsplash.com/random/500x500");
+  background-size: auto; }
 
 /*# sourceMappingURL=style.css.map */
