@@ -4,11 +4,16 @@ function setRotation(tile, rotation) {
     tile.style.setProperty('transform', `rotate(${rotation}deg)`);
 }
 
+function getRotation(tile) {
+    return /\d+/.exec(tile.style.transform);
+}
+
 function rotateTile(tile) {
-    const currentRotation = /\d+/.exec(tile.style.transform);
+    const currentRotation = getRotation(tile);
     let newRotation = (currentRotation) ? parseInt(currentRotation) + 90 : 90;
     if (newRotation >= 360) newRotation = 0;
     setRotation(tile, newRotation);
+    if (checkPuzzleIsSolved()) console.log('Victory');
 }
 
 function shuffle() {
@@ -35,6 +40,10 @@ function positionTilesCorrectly() {
 
 function newPuzzle() {
     location.reload();
+}
+
+function checkPuzzleIsSolved() {
+    return Array.from(tiles).some(tile => getRotation(tile) !== '0');
 }
 
 function init() {
