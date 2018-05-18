@@ -1,6 +1,12 @@
 h1 {
   font-size: 2em; }
 
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center; }
+
 .tiles {
   display: grid;
   grid-template-columns: repeat(5, 100px);
