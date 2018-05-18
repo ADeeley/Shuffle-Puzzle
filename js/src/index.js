@@ -1,8 +1,14 @@
-window.onload = function() {
-    let content = document.createElement("div"),
-        para = document.createElement("p"),
-        body = document.getElementsByTagName("body")[0];
+const tile = document.querySelector('.tile');
 
-    para.innerHTML = "Hello, World!",
-    body.appendChild(content.appendChild(para));
+function rotateTile(tile) {
+    const turnVal = 90;
+    const currentRotation = /\d+/.exec(tile.style.transform);
+    let newRotation = (currentRotation) ? parseInt(currentRotation) + 90 : 90;
+    if (newRotation >= 360) newRotation = 0;
+
+    console.log('current ' + newRotation);
+    tile.setAttribute('style', `transform: rotate(${newRotation}deg)`);
 }
+
+
+tile.addEventListener('click', (e) => rotateTile(e.target));
