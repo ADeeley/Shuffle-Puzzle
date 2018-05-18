@@ -1,5 +1,6 @@
 const tiles = document.querySelectorAll('.tiles__tile');
-const shuffleButton = document.querySelector('#shuffle-button');
+const shuffleButton = document.querySelector('#controls__shuffle');
+const NewPuzzleButton = document.querySelector('#controls__new-puzzle');
 
 function rotateTile(tile) {
     const currentRotation = /\d+/.exec(tile.style.transform);
@@ -15,9 +16,6 @@ function shuffle() {
     })
 }
 
-tiles.forEach(tile => tile.addEventListener('click', (e) => rotateTile(e.target)));
-shuffleButton.addEventListener('click', shuffle);
-
 function positionTilesCorrectly() {
     let size = 100;
     let row = 0;
@@ -32,7 +30,13 @@ function positionTilesCorrectly() {
     });
 }
 
+function newPuzzle() {
+    
+}
+
 function init() {
+    tiles.forEach(tile => tile.addEventListener('click', (e) => rotateTile(e.target)));
+    shuffleButton.addEventListener('click', shuffle);
     positionTilesCorrectly();
     shuffle();
 }
