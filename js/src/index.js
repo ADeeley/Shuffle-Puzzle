@@ -5,7 +5,7 @@ function setRotation(tile, rotation) {
 }
 
 function getRotation(tile) {
-    return /\d+/.exec(tile.style.transform);
+    return /\d+/.exec(tile.style.transform)[0];
 }
 
 function rotateTile(tile) {
@@ -13,7 +13,7 @@ function rotateTile(tile) {
     let newRotation = (currentRotation) ? parseInt(currentRotation) + 90 : 90;
     if (newRotation >= 360) newRotation = 0;
     setRotation(tile, newRotation);
-    if (checkPuzzleIsSolved()) console.log('Victory');
+    if (puzzleIsSolved()) displayVictoryNotice();
 }
 
 function shuffle() {
@@ -21,6 +21,7 @@ function shuffle() {
         const newRotation = Math.floor(Math.random() * 4) * 90;
         setRotation(tile, newRotation);
     });
+    hideVictoryNotice();
 }
 
 function positionTilesCorrectly() {
@@ -42,8 +43,18 @@ function newPuzzle() {
     location.reload();
 }
 
-function checkPuzzleIsSolved() {
-    return Array.from(tiles).some(tile => getRotation(tile) !== '0');
+function puzzleIsSolved() {
+    return !Array.from(tiles).some(tile => getRotation(tile) !== '0');
+}
+
+function displayVictoryNotice() {
+    const victoryNotice = document.querySelector('.victory-notice');
+    victoryNotice.style.setProperty('display', 'block');
+}
+
+function hideVictoryNotice() {
+    const victoryNotice = document.querySelector('.victory-notice');
+    victoryNotice.style.setProperty('display', 'none');
 }
 
 function init() {

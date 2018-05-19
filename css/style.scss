@@ -34,3 +34,17 @@ footer {
     font-style: italic;
     font-size: 14px;
 }
+
+.victory-notice {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    font-family: 'Bangers', cursive;
+    color: black;
+    text-shadow: 2px 2px white;
+    background-color: white;
+    margin: 0;
+}
