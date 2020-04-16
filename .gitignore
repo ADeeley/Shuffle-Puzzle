@@ -5,3 +5,5 @@
 node_modules
 bundle.js
 *.css.map
+.cache
+dist

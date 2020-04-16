@@ -1,50 +1,91 @@
-@import './button.scss';
-@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url("https://fonts.googleapis.com/css?family=Bangers");
+
+:root {
+  /** colours **/
+  --primary: #000000;
+  --secondary: #ffffff;
+  --tertiary: #dadada;
+
+  /** values **/
+  --tile-size: 100px;
+}
+
+@mixin displayFont {
+  font-family: "Bangers", cursive;
+}
+
+.control_button {
+  color: var(--primary);
+  font-size: 20px;
+  font-family: helvetica;
+  text-decoration: none;
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  background-color: var(--secondary);
+  padding: 4px 30px;
+}
+
+.control_button:hover {
+  color: var(--secondary);
+  background-color: var(--primary);
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+}
 
 h1 {
-    font-size: 80px;
-    font-family: 'Bangers', cursive;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px lightgrey;
+  @include displayFont;
+  font-size: 80px;
+  text-shadow: 2px 2px var(--tertiary);
+  margin: 0px;
 }
 
 .container {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  >* {
+    margin: 1rem;
+  }
 }
 
 .tiles {
-    display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows: repeat(5, 100px);
+  display: grid;
+  grid-template-columns: repeat(5, var(--tile-size));
+  grid-template-rows: repeat(5, var(--tile-size));
 }
 
 .tiles__tile {
-    width: 100px;
-    height: 100px;
-    background-image: url("https://source.unsplash.com/random/500x500");
-    background-size: auto;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  background-image: url("https://source.unsplash.com/random/500x500");
+  background-size: auto;
 }
 
 footer {
-    font-family: helvetica;
-    font-style: italic;
-    font-size: 14px;
+  font-family: helvetica;
+  font-style: italic;
+  font-size: 14px;
 }
 
 .victory-notice {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 60px;
-    font-family: 'Bangers', cursive;
-    color: black;
-    text-shadow: 2px 2px white;
-    background-color: white;
-    margin: 0;
+  @include displayFont;
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: var(--primary);
+  text-shadow: 2px 2px var(--secondary);
+  background-color: var(--secondary);
+  margin: 0;
 }
+
+/*# sourceMappingURL=style.css.map */
