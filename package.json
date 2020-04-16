@@ -19,13 +19,9 @@
     "url": "https://github.com/ADeeley/vanilla_skeleton/issues"
   },
   "homepage": "https://github.com/ADeeley/vanilla_skeleton#readme",
-  "dependencies": {
-    "browserify": "^14.5.0",
-    "eslint": "^4.13.1",
-    "http-server": "^0.11.1",
-    "watchify": "^3.9.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "eslint-config-google": "^0.9.1"
+    "parcel-bundler": "^1.12.4",
+    "prettier": "2.0.4"
   }
 }
