@@ -4,7 +4,8 @@
   /** colours **/
   --primary: #000000;
   --secondary: #ffffff;
-  --tertiary: #dadada;
+  --highlight: #dadada;
+  --muted: #777676;
 
   /** values **/
   --tile-size: 100px;
@@ -39,7 +40,7 @@
 h1 {
   @include displayFont;
   font-size: 80px;
-  text-shadow: 2px 2px var(--tertiary);
+  text-shadow: 2px 2px var(--highlight);
   margin: 0px;
 }
 
@@ -50,7 +51,7 @@ h1 {
   align-items: center;
   justify-content: flex-start;
 
-  >* {
+  > * {
     margin: 1rem;
   }
 }
@@ -70,6 +71,7 @@ h1 {
 
 footer {
   font-family: helvetica;
+  color: var(--muted);
   font-style: italic;
   font-size: 14px;
 }
