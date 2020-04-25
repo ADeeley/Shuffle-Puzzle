@@ -1,32 +1,20 @@
+import Tile from "./tile";
+
 document
   .querySelector(".tiles")
-  .insertAdjacentHTML("afterbegin", '<div class="tiles__tile"></div>'.repeat(25));
-const tiles = document.querySelectorAll(".tiles__tile");
+  .insertAdjacentHTML(
+    "afterbegin",
+    '<div class="tiles__tile"></div>'.repeat(25)
+  );
 
-function setRotation(tile, rotation) {
-  tile.style.setProperty("transform", `rotate(${rotation}deg)`);
-}
-
-function getRotation(tile) {
-  return /\d+/.exec(tile.style.transform)[0];
-}
-
-function rotateTile(tile) {
-  const currentRotation = getRotation(tile);
-  let newRotation = currentRotation ? parseInt(currentRotation) + 90 : 90;
-  if (newRotation >= 360) {
-    newRotation = 0;
-  }
-  setRotation(tile, newRotation);
-  if (puzzleIsSolved()) {
-    displayVictoryNotice();
-  }
-}
+const tiles = [...document.querySelectorAll(".tiles__tile")].map(
+  (tileElement) => new Tile(tileElement)
+);
 
 function shuffle() {
   tiles.forEach((tile) => {
     const newRotation = Math.floor(Math.random() * 4) * 90;
-    setRotation(tile, newRotation);
+    tile.setRotation(newRotation);
   });
   hideVictoryNotice();
 }
@@ -38,7 +26,7 @@ function positionTilesCorrectly() {
   let yOffset = 0;
 
   tiles.forEach((tile) => {
-    tile.style.setProperty(
+    tile.tileElement.style.setProperty(
       "background-position",
       `-${xOffset}px -${yOffset}px`
     );
@@ -55,7 +43,7 @@ function newPuzzle() {
 }
 
 function puzzleIsSolved() {
-  return !Array.from(tiles).some((tile) => getRotation(tile) !== "0");
+  return !Array.from(tiles).some((tile) => tile.getRotation() !== "0");
 }
 
 function displayVictoryNotice() {
@@ -73,7 +61,9 @@ function init() {
   const NewPuzzleButton = document.querySelector("#controls__new-puzzle");
 
   tiles.forEach((tile) =>
-    tile.addEventListener("click", (event) => rotateTile(event.target))
+    tile.tileElement.addEventListener("click", (event) =>
+      tile.rotateTile(event.target)
+    )
   );
   shuffleButton.addEventListener("click", shuffle);
   NewPuzzleButton.addEventListener("click", newPuzzle);
