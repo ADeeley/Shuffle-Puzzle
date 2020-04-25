@@ -56,14 +56,18 @@ function hideVictoryNotice() {
   victoryNotice.style.setProperty("display", "none");
 }
 
+function rotationEvent(tile) {
+  tile.rotateTile(event.target);
+  if (puzzleIsSolved()) {
+    displayVictoryNotice();
+  }
+}
 function init() {
   const shuffleButton = document.querySelector("#controls__shuffle");
   const NewPuzzleButton = document.querySelector("#controls__new-puzzle");
 
   tiles.forEach((tile) =>
-    tile.tileElement.addEventListener("click", (event) =>
-      tile.rotateTile(event.target)
-    )
+    tile.tileElement.addEventListener("click", (event) => rotationEvent(tile))
   );
   shuffleButton.addEventListener("click", shuffle);
   NewPuzzleButton.addEventListener("click", newPuzzle);

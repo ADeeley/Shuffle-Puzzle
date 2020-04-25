@@ -6,13 +6,9 @@ export default class Tile {
   setRotation(rotation) {
     this.tileElement.style.setProperty("transform", `rotate(${rotation}deg)`);
   }
-	getRotation() {
+  getRotation() {
     return /\d+/.exec(this.tileElement.style.transform)[0];
   }
-
-//   tileElement() {
-//     return this.tileElement;
-//   }
 
   rotateTile() {
     const currentRotation = this.getRotation();
@@ -21,8 +17,5 @@ export default class Tile {
       newRotation = 0;
     }
     this.setRotation(newRotation);
-    // if (puzzleIsSolved()) {
-    //   displayVictoryNotice();
-    // }
   }
 }
