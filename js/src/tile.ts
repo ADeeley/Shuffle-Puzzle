@@ -1,14 +1,15 @@
 export default class Tile {
   constructor(public tileElement: HTMLElement) {}
 
-  setRotation(rotation): void {
+  public setRotation(rotation): void {
     this.tileElement.style.setProperty("transform", `rotate(${rotation}deg)`);
   }
-  getRotation(): string {
+
+  public getRotation(): string {
     return /\d+/.exec(this.tileElement.style.transform)[0];
   }
 
-  rotateTile(): void {
+  public rotateTile(): void {
     const currentRotation: string = this.getRotation();
     let newRotation: number = currentRotation
       ? parseInt(currentRotation) + 90
@@ -16,7 +17,7 @@ export default class Tile {
 
     if (newRotation >= 360) {
       newRotation = 0;
-	}
+    }
 
     this.setRotation(newRotation);
   }

@@ -25,10 +25,10 @@ function init(): void {
   const NewPuzzleButton: HTMLElement = document.querySelector(
     "#controls__new-puzzle"
   );
-  const victoryNoticeElement: HTMLElement = document.querySelector(
-    ".victory-notice"
-  );
-  const tiles: Tiles = new Tiles(new GameUtils(victoryNoticeElement));
+    const victoryNoticeElement: HTMLElement = document.querySelector(
+      ".victory-notice"
+    );
+    const tiles: Tiles = new Tiles(new GameUtils(victoryNoticeElement));
 
   shuffleButton.addEventListener("click", () => {
     tiles.shuffle();

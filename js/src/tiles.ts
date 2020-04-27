@@ -15,14 +15,7 @@ export default class Tiles {
     this.shuffle();
   }
 
-  rotationEvent(tile): void {
-    tile.rotateTile(event.target);
-    if (this.gameUtils.puzzleIsSolved(this.tiles)) {
-      this.gameUtils.displayVictoryNotice();
-    }
-  }
-
-  shuffle(): void {
+  public shuffle(): void {
     this.tiles.forEach((tile: Tile) => {
       const newRotation: number = Math.floor(Math.random() * 4) * 90;
       tile.setRotation(newRotation);
@@ -30,7 +23,14 @@ export default class Tiles {
     this.gameUtils.hideVictoryNotice();
   }
 
-  positionTiles(): void {
+  private rotationEvent(tile): void {
+    tile.rotateTile(event.target);
+    if (this.gameUtils.puzzleIsSolved(this.tiles)) {
+      this.gameUtils.displayVictoryNotice();
+    }
+  }
+
+  private positionTiles(): void {
     const tileSize: number = 100;
     const puzzleSize: number = 500;
     let xOffset: number = 0;
