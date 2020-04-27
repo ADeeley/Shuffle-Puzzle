@@ -1,43 +1,42 @@
 import Tile from "./tile";
 import GameUtils from "./utils";
+
 export default class Tiles {
-  constructor() {
-    this.gameUtils = new GameUtils();
+  private tiles: Array<Tile>;
+
+  constructor(private gameUtils: GameUtils) {
     this.tiles = [...document.querySelectorAll(".tiles__tile")].map(
-      (tileElement) => new Tile(tileElement)
+      (tileElement: HTMLElement) => new Tile(tileElement)
     );
     this.tiles.forEach((tile) =>
-      tile.tileElement.addEventListener("click", (event) =>
-        this.rotationEvent(tile)
-      )
+      tile.tileElement.addEventListener("click", () => this.rotationEvent(tile))
     );
     this.positionTiles();
     this.shuffle();
   }
 
-  rotationEvent(tile) {
+  rotationEvent(tile): void {
     tile.rotateTile(event.target);
     if (this.gameUtils.puzzleIsSolved(this.tiles)) {
       this.gameUtils.displayVictoryNotice();
     }
   }
 
-  shuffle() {
-    console.log(this);
-    this.tiles.forEach((tile) => {
-      const newRotation = Math.floor(Math.random() * 4) * 90;
+  shuffle(): void {
+    this.tiles.forEach((tile: Tile) => {
+      const newRotation: number = Math.floor(Math.random() * 4) * 90;
       tile.setRotation(newRotation);
     });
     this.gameUtils.hideVictoryNotice();
   }
 
-  positionTiles() {
-    const tileSize = 100;
-    const puzzleSize = 500;
-    let xOffset = 0;
-    let yOffset = 0;
+  positionTiles(): void {
+    const tileSize: number = 100;
+    const puzzleSize: number = 500;
+    let xOffset: number = 0;
+    let yOffset: number = 0;
 
-    this.tiles.forEach((tile) => {
+    this.tiles.forEach((tile: Tile) => {
       tile.tileElement.style.setProperty(
         "background-position",
         `-${xOffset}px -${yOffset}px`

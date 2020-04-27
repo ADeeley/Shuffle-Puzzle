@@ -1,4 +1,5 @@
 import Tiles from "./tiles";
+import GameUtils from "./utils";
 
 document
   .querySelector(".tiles")
@@ -24,7 +25,10 @@ function init(): void {
   const NewPuzzleButton: HTMLElement = document.querySelector(
     "#controls__new-puzzle"
   );
-  const tiles: Tiles = new Tiles();
+  const victoryNoticeElement: HTMLElement = document.querySelector(
+    ".victory-notice"
+  );
+  const tiles: Tiles = new Tiles(new GameUtils(victoryNoticeElement));
 
   shuffleButton.addEventListener("click", () => {
     tiles.shuffle();

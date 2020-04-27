@@ -1,5 +1,5 @@
 export default class Tile {
-  constructor(public tileElement) {}
+  constructor(public tileElement: HTMLElement) {}
 
   setRotation(rotation): void {
     this.tileElement.style.setProperty("transform", `rotate(${rotation}deg)`);

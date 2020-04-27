@@ -1,19 +1,17 @@
+import Tile from "./tile";
+
 export default class GameUtils {
-	private victoryNotice: HTMLElement;
+  constructor(private victoryNotice: HTMLElement) {}
 
-  constructor() {
-    this.victoryNotice = document.querySelector(".victory-notice");
-  }
-
-  hideVictoryNotice() {
+  hideVictoryNotice(): void {
     this.victoryNotice.style.setProperty("display", "none");
   }
 
-  displayVictoryNotice() {
+  displayVictoryNotice(): void {
     this.victoryNotice.style.setProperty("display", "block");
   }
 
-  puzzleIsSolved(tiles) {
+  puzzleIsSolved(tiles: Array<Tile>): boolean {
     return !Array.from(tiles).some((tile) => tile.getRotation() !== "0");
   }
 }
