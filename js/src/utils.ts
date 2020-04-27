@@ -1,5 +1,6 @@
-
 export default class GameUtils {
+	private victoryNotice: HTMLElement;
+
   constructor() {
     this.victoryNotice = document.querySelector(".victory-notice");
   }
