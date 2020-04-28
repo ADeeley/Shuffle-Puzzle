@@ -31,8 +31,7 @@ export default class Tiles {
   }
 
   private positionTiles(): void {
-    const tileSize: number = 100;
-    const puzzleSize: number = 500;
+    const { tileSize, puzzleSize } = this.gameUtils.config;
     let xOffset: number = 0;
     let yOffset: number = 0;
 

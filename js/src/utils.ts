@@ -3,6 +3,15 @@ import Tile from "./tile";
 export default class GameUtils {
   constructor(private victoryNotice: HTMLElement) {}
 
+  private _config: any = {
+    tileSize: 100,
+    puzzleSize: 500,
+  };
+
+  public get config(): any {
+    return this._config;
+  }
+
   public hideVictoryNotice(): void {
     this.victoryNotice.style.setProperty("display", "none");
   }
